@@ -10,6 +10,12 @@ import (
 // ClientOption represents options for a generic GraphQL client.
 type ClientOption func(*Client)
 
+func WithContentTypeJson() ClientOption {
+	return func(c *Client) {
+		c.header.Set("Content-Type", "application/json")
+	}
+}
+
 //WithAPIKey returns a ClientOption configured with the given API key
 func WithAPIKey(apiKey string) ClientOption {
 	return func(c *Client) {
